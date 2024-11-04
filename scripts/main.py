@@ -28,12 +28,12 @@ def main():
             nowstr = datetime.now().strftime("%Y-%m-%d_%H-%M-%S_")
             if processed:  # All lines in the file succesful
                 if 'Windows' in operating_system:
-                    os.rename(f'{INPUT_DIR}/{filename}', f'{PROCESSED_DIR}\{nowstr}{filename}')
+                    os.rename(f'{INPUT_DIR}\{filename}', f'{PROCESSED_DIR}\{nowstr}{filename}')
                 else:
                     os.rename(f'{INPUT_DIR}/{filename}', f'{PROCESSED_DIR}/{nowstr}{filename}')
             else:
                 if 'Windows' in operating_system:
-                    os.rename(f'{INPUT_DIR}/{filename}', f'{FAILED_DIR}\{nowstr}{filename}')
+                    os.rename(f'{INPUT_DIR}\{filename}', f'{FAILED_DIR}\{nowstr}{filename}')
                 else:
                     os.rename(f'{INPUT_DIR}/{filename}', f'{FAILED_DIR}/{nowstr}{filename}')
 
