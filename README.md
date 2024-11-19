@@ -26,9 +26,9 @@ will generate five images of racoon birthday in pastel style.
 * flat_v3
 * graffiti_v3
 
-If no style is given, a random style will be chosen for each iterartion at runtime.
+If no style is given, a random style will be chosen for each iteration at runtime.
 
-You can put as many input files in the new promts folder as you like, they will be processed in a loop. Generally speaking, many small prompt files will yield less failures than a few large files.
+You can put as many input files in the new prompts folder as you like, they will be processed in a loop. Generally speaking, many small prompt files will yield less failures than a few large files.
 
 ## Dockerisation
 
