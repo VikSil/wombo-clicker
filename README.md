@@ -1,6 +1,6 @@
 # Wombo clicker
 
-This script automates A.I. image generation on [Wombo Dream](https://dream.ai/create) website. 
+This application automates A.I. image generation on [Wombo Dream](https://dream.ai/create) website. 
 
 It takes in prompts from *.csv* files located in `words/01_new_prompts`. Each line in an input file must have three columns, separated by pipe:
 * prompt text
@@ -50,7 +50,7 @@ In order to run the Docker image from bash terminal, use the command:
     docker run -v "/$(pwd)/pics:/wombo_clicker/pics" -v "/$(pwd)/words:/wombo_clicker/words" -it wombo-clicker
 
 
-It will take a minute for the script to initialise. It will start by outputting a message `I am a clicker` to console, followed by the prompts it has read from the input folder. While running, the script will output information about each prompt it is processing.
+It will take 60 seconds or more for the script to initialise. It will start by outputting a message `I am a clicker` to console, followed by the prompts it has read from the input folder. While running, the script will output information about each prompt it is processing.
 
 Generated images will be downloaded into `pics/010_new` folder.
 
