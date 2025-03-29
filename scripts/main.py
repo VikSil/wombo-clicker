@@ -1,6 +1,7 @@
 import os
 import platform
 import time
+import shutil
 
 from datetime import datetime
 from wombo_generator import clicker
@@ -28,14 +29,18 @@ def main():
             nowstr = datetime.now().strftime("%Y-%m-%d_%H-%M-%S_")
             if processed:  # All lines in the file succesful
                 if 'Windows' in operating_system:
-                    os.rename(f'{INPUT_DIR}\{filename}', f'{PROCESSED_DIR}\{nowstr}{filename}')
+                    shutil.copyfile(f'{INPUT_DIR}\{filename}', f'{PROCESSED_DIR}\{nowstr}{filename}')
+                    os.remove(f'{INPUT_DIR}\{filename}')
                 else:
-                    os.rename(f'{INPUT_DIR}/{filename}', f'{PROCESSED_DIR}/{nowstr}{filename}')
+                    shutil.copyfile(f'{INPUT_DIR}/{filename}', f'{PROCESSED_DIR}/{nowstr}{filename}')
+                    os.remove(f'{INPUT_DIR}/{filename}')
             else:
                 if 'Windows' in operating_system:
-                    os.rename(f'{INPUT_DIR}\{filename}', f'{FAILED_DIR}\{nowstr}{filename}')
+                    shutil.copyfile(f'{INPUT_DIR}\{filename}', f'{FAILED_DIR}\{nowstr}{filename}')
+                    os.remove(f'{INPUT_DIR}\{filename}')
                 else:
-                    os.rename(f'{INPUT_DIR}/{filename}', f'{FAILED_DIR}/{nowstr}{filename}')
+                    shutil.copyfile(f'{INPUT_DIR}/{filename}', f'{FAILED_DIR}/{nowstr}{filename}')
+                    os.remove(f'{INPUT_DIR}/{filename}')
 
 
 if __name__ == "__main__":
