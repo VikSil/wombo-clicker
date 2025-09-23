@@ -1,7 +1,9 @@
 import os
 import platform
 import time
+import urllib
 
+from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
@@ -74,3 +76,10 @@ class Browser:
         wait = WebDriverWait(self.browser, timeout)
         wait.until(EC.presence_of_element_located((by, id)))
         self.browser.find_element(by=by, value=id).click()
+
+    def wait_and_download(self, by:By, id:str, timeout:int):
+        wait = WebDriverWait(self.browser, timeout)
+        wait.until(EC.presence_of_element_located((by, id)))
+        img =  self.browser.find_element(by=by, value=id)
+        src = img.get_attribute('src')
+        urllib.request.urlretrieve(src, f'{DOWNLOAD_DIR}/{datetime.now().strftime("%Y-%m-%d_%H-%M-%S_")}.jpg')

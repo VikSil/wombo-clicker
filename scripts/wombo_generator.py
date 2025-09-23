@@ -139,9 +139,16 @@ def process_prompt(prompt: str, style: str, count: int, browser: Browser) -> boo
             close_popup(browser)
 
             # click download button when it appears
-            browser.wait_and_click(by=By.CLASS_NAME, id='SelectableItem__DownloadButton-sc-6c0djm-6', timeout=60)
+            browser.wait_and_download(by=By.CLASS_NAME, id='Common__DreamImage-sc-1dxkxby-3', timeout=60)
             browser.sleep(2)
 
+        except Exception as e:  # likely waiting timeout
+            print('exception in second try block')
+            print(e)
+            return False
+        
+        try:
+        
             # rename last downloaded file
             if 'Windows' in operating_system:
                 filename = max([DOWNLOAD_DIR + "\\" + f for f in os.listdir(DOWNLOAD_DIR)], key=os.path.getctime)
@@ -150,8 +157,8 @@ def process_prompt(prompt: str, style: str, count: int, browser: Browser) -> boo
             new_filename = f'{datetime.now().strftime("%Y-%m-%d_%H-%M-%S_")}{prompt}_{style_}_{i}.jpg'
             os.rename(f'{filename}', f'{DOWNLOAD_DIR}/{new_filename}')
 
-        except Exception as e:  # likely waiting timeout
-            print('exception in second try block')
+        except Exception as e:  # likely dir empty
+            print('exception in third try block')
             print(e)
             return False
 
